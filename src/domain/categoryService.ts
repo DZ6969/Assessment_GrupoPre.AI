@@ -37,7 +37,7 @@ export function getActiveLeafPaths(structure: CategoryNode[]): string[] {
     if (seen.has(node)) return;
     seen.add(node);
 
-    const typed = node as CategoryNode;
+    const typed = node as unknown as CategoryNode;
     if (!isValidActive(typed.active) || !typed.active) return;
     if (!isValidName(typed.name)) return;
 
@@ -150,8 +150,8 @@ export function analyzeCategoryTree(
     }
 
     if (seenRefs.has(node)) {
-      const id = isValidId((node as CategoryNode).id)
-        ? (node as CategoryNode).id
+      const id = isValidId((node as unknown as CategoryNode).id)
+        ? (node as unknown as CategoryNode).id
         : undefined;
       anomalies.push({
         code: "CYCLE_DETECTED",
@@ -163,7 +163,7 @@ export function analyzeCategoryTree(
     }
     seenRefs.add(node);
 
-    const typed = node as CategoryNode;
+    const typed = node as unknown as CategoryNode;
     let nodeIsValid = true;
 
     if (!isValidId(typed.id)) {
