@@ -67,8 +67,10 @@ moveCategory(structure: CategoryNode[], categoryId: number, newParentId: number)
   excluding any branch where an ancestor is inactive. Output is alphabetically
   sorted via `localeCompare`.
 - **Phase 2** — `findCategoryById`: iterative search returning the original
-  reference, path, depth, parent id and `isLeaf`. Returns `null` when not found
-  and never mutates the input.
+  reference, `path` (array), `pathString` (`"a/b/c"`), depth, parent id and
+  `isLeaf`. Returns `null` when not found and never mutates the input. Both
+  representations of the path are exposed: the array is convenient for
+  programmatic use, the string matches the example in the spec.
 - **Phase 3** — `analyzeCategoryTree`: iterative analyzer that produces a
   `TreeAnalysisReport` with active leaf paths, node counts, max depth and a list
   of `TreeAnomaly` entries. Tolerates malformed input without crashing.

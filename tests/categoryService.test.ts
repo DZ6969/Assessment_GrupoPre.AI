@@ -114,6 +114,7 @@ describe("findCategoryById", () => {
     expect(result).not.toBeNull();
     expect(result!.node.name).toBe("Laptops");
     expect(result!.path).toEqual(["Electrónica", "Computadoras", "Laptops"]);
+    expect(result!.pathString).toBe("Electrónica/Computadoras/Laptops");
     expect(result!.depth).toBe(2);
     expect(result!.parentId).toBe(4);
     expect(result!.isLeaf).toBe(true);
@@ -124,6 +125,7 @@ describe("findCategoryById", () => {
     expect(result).not.toBeNull();
     expect(result!.parentId).toBeNull();
     expect(result!.depth).toBe(0);
+    expect(result!.pathString).toBe("Electrónica");
     expect(result!.isLeaf).toBe(false);
   });
 

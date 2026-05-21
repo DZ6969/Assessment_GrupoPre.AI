@@ -19,6 +19,7 @@ export interface CategoryNode {
  *
  *  - node: the original reference (not a clone).
  *  - path: array of trimmed names from root to node, inclusive.
+ *  - pathString: same path joined with "/" (matches the spec example).
  *  - depth: 0 for a root node, +1 per level.
  *  - parentId: id of the parent node, or null if `node` is a root.
  *  - isLeaf: true when subcategories is empty.
@@ -26,6 +27,7 @@ export interface CategoryNode {
 export interface CategorySearchResult {
   node: CategoryNode;
   path: string[];
+  pathString: string;
   depth: number;
   parentId: number | null;
   isLeaf: boolean;

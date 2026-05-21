@@ -98,9 +98,11 @@ export function searchById(
     if (result) return false;
     if ((node as CategoryNode).id === id) {
       const subs = (node as CategoryNode).subcategories;
+      const pathCopy = [...path];
       result = {
         node: node as CategoryNode,
-        path: [...path],
+        path: pathCopy,
+        pathString: pathCopy.join("/"),
         depth,
         parentId: parent ? parent.id : null,
         isLeaf: Array.isArray(subs) ? subs.length === 0 : true,
